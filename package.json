@@ -1,0 +1,25 @@
+{
+  "name": "express-esimed",
+  "version": "1.0.0",
+  "description": "- Fichier de configuration de l'app\r - Fichier dédié à la DB (table \"user\" avec : id, firstName, lastName, password)\r - Fichier dédié à l'intéraction avec la DB\r - Route pour récupérer tous les \"user\"\r - Route pour récupérer un \"user\" via son firstName\r - Route pour créer un \"user\"\r - Route pour modifier un \"user\"\r - Route pour supprimer un \"user\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CDelgrange/express-esimed.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CDelgrange/express-esimed/issues"
+  },
+  "homepage": "https://github.com/CDelgrange/express-esimed#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "knex": "^0.95.15",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.2"
+  }
+}

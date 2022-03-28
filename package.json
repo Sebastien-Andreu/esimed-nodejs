@@ -1,25 +1,22 @@
 {
-  "name": "express-esimed",
+  "name": "test-express-ws",
   "version": "1.0.0",
-  "description": "- Fichier de configuration de l'app\r - Fichier dédié à la DB (table \"user\" avec : id, firstName, lastName, password)\r - Fichier dédié à l'intéraction avec la DB\r - Route pour récupérer tous les \"user\"\r - Route pour récupérer un \"user\" via son firstName\r - Route pour créer un \"user\"\r - Route pour modifier un \"user\"\r - Route pour supprimer un \"user\"",
+  "description": "Suppa description",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "devstart": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/CDelgrange/express-esimed.git"
-  },
-  "author": "",
+  "author": "Moi",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/CDelgrange/express-esimed/issues"
-  },
-  "homepage": "https://github.com/CDelgrange/express-esimed#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
-    "knex": "^0.95.15",
-    "path": "^0.12.7",
-    "sqlite3": "^5.0.2"
+    "luxon": "^2.3.1",
+    "md5": "^2.3.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const userRepository = require('../models/user-repository');
+const authenticated = require('../models/authenticated'); // use to verify token
+const authorization = require('../models/authorization');
 
-router.get('/', (req, res) => {
+router.get('/', authenticated,(req, res) => {
   res.send(userRepository.getUsers())
 });
 
-router.get('/:firstName', (req, res) => {
+router.get('/:firstName', authenticated, (req, res) => {
   const foundUser = userRepository.getUserByFirstName(req.params.firstName);
 
   if (!foundUser) {
@@ -16,17 +18,17 @@ router.get('/:firstName', (req, res) => {
   res.send(foundUser);
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticated, (req, res) => {
   userRepository.createUser(req.body);
   res.status(201).end();
 });
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authenticated, authorization, (req, res) => {
   userRepository.updateUser(req.params.id, req.body);
   res.status(204).end();
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticated, authorization, (req, res) => {
   userRepository.deleteUser(req.params.id);
   res.status(204).end();
 });

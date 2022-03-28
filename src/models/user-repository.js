@@ -7,7 +7,7 @@ exports.getUsers = () => {
 };
 
 exports.getUserByFirstName = (firstName) => {
-  const foundUser = users.find((user) => user.firstName == firstName);
+  const foundUser = users.find((user) => user.firstName === firstName);
 
   if (!foundUser) {
     throw new Error('User not found');
@@ -22,13 +22,14 @@ exports.createUser = (data) => {
     firstName: data.firstName,
     lastName: data.lastName,
     password: md5(data.password),
+    role: data.role || 'member'
   };
 
   users.push(user);
 };
 
 exports.updateUser = (id, data) => {
-  const foundUser = users.find((user) => user.id == id);
+  const foundUser = users.find((user) => user.id === id);
 
   if (!foundUser) {
     throw new Error('User not found');
@@ -40,7 +41,7 @@ exports.updateUser = (id, data) => {
 };
 
 exports.deleteUser = (id) => {
-  const userIndex = users.findIndex((user) => user.id == id);
+  const userIndex = users.findIndex((user) => user.id === id);
 
   if (userIndex === -1) {
     throw new Error('User not foud');

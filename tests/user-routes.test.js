@@ -1,6 +1,4 @@
 const request = require('supertest');
-const md5 = require('md5');
-const {isHexColor} = require("validator");
 
 let token;
 

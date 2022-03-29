@@ -4,7 +4,6 @@ const md5 = require('md5');
 const secret = process.env.JWT_SECRET || 'secretOfAppli__9525+';
 
 module.exports = (body, res) => {
-
     const foundUser = userRepository.getUserByFirstName(body.firstName);
     if (!foundUser) throw new Error('User not found');
 

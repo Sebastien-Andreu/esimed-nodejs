@@ -1,10 +1,15 @@
 const express = require('express');
 const { DateTime } = require('luxon');
 const cors = require('cors');
+const expressJwt = require('express-jwt')
+const secret = process.env.JWT_SECRET || 'secretOfAppli__9525+';
+
 
 const initJsonHandlerMiddlware = (app) => app.use(express.json());
 
 const initCorsMiddlware = (app) => app.use(cors());
+
+const initJwtMiddlware = (app) => app.use(expressJwt({ secret: secret, algorithms: ['HS256']}).unless({path: ['/login']}));
 
 const initLoggerMiddlware = (app) => {
   app.use((req, res, next) => {
@@ -29,6 +34,7 @@ exports.initializeConfigMiddlewares = (app) => {
   initJsonHandlerMiddlware(app);
   initCorsMiddlware(app);
   initLoggerMiddlware(app);
+  initJwtMiddlware(app)
 }
 
 exports.initializeErrorMiddlwares = (app) => {

@@ -3,6 +3,8 @@ const router = express.Router();
 const userRepository = require('../models/user-repository');
 const authorization = require('../models/authorization');
 
+const { body, validationResult } = require('express-validator');
+
 router.get('/',(req, res) => {
   res.send(userRepository.getUsers())
 });
@@ -17,7 +19,15 @@ router.get('/:firstName', (req, res) => {
   res.send(foundUser);
 });
 
-router.post('/', (req, res) => {
+router.post('/',
+    body('firstName').exists().withMessage('firstName is require'),
+    body('lastName').exists().withMessage('lastName is require'),
+    body('password').isLength({ min: 8 }).withMessage('8 length minimum'), (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   userRepository.createUser(req.body);
   res.status(201).end();
 });

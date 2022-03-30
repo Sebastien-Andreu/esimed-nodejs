@@ -1,3 +1,3 @@
 module.exports = async () => {
-    global.webServer.close()
+  global.webServer.stop();
 }

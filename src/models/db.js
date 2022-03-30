@@ -1,11 +1,10 @@
-const uuid = require("uuid");
-const md5 = require("md5");
-exports.users = [
-    {
-        id: uuid.v4(),
-        firstName: 'admin',
-        lastName: 'admin',
-        password: md5('admin'),
-        role: 'admin'
-    }
-];
+const { Sequelize } = require('sequelize');
+
+exports.sequelize = new Sequelize({
+  dialect: 'postgres',
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DB,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  port: process.env.POSTGRES_PORT,
+});
